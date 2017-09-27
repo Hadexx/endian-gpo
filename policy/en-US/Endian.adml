@@ -1,0 +1,23 @@
+<policyDefinitionResources revision="1.0" schemaVersion="1.0">
+  <displayName>
+  </displayName>
+  <description>
+  </description>
+  <resources>
+    <stringTable>
+      <string id="CAT_DC9D8DB3_D500_4936_A2F9_C4459CC09D37">Endian</string>
+      <string id="POL_85CA3958_E4E4_4F13_B757_F22F790A634A">Endian Address</string>
+      <string id="POL_A2FE8983_212D_491C_9510_EA9673974684">Bypass Transparent Proxy</string>
+      <string id="POL_85CA3958_E4E4_4F13_B757_F22F790A634A_Help">The IP of the Endian Firewall.</string>
+      <string id="POL_A2FE8983_212D_491C_9510_EA9673974684_Help">Whether the computers affected by this policy should be added to the bypass list.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="POL_85CA3958_E4E4_4F13_B757_F22F790A634A">
+        <textBox refId="TXT_78F23B33_7FD2_4FB4_A109_B57639EAF261">
+          <label>IP</label>
+          <defaultValue></defaultValue>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>
