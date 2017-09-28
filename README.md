@@ -21,10 +21,10 @@ Now every computer in your domain will execute this script when they start. Howe
 I recommend you to create a seperate Group Policy Object, and only apply it to the computers that should get whitelisted (for example: teacher computers, or managment/supervisor workstations). Inside of that GPO, you only have to enable `Bypass Transparent Proxy` and you should be ready on the client side.
 
 ### Setting up the server side
-The server-side setup is a bit simpler than the client side, because everything we need is already there. Endian comes with python preinstalled and we are going to use linux/endian onboard systems to start the server together with the operating system. This requires SSH access, which you can enable
+The server-side setup is a bit simpler than the client side, because almost everything we need is already there. Endian comes with python preinstalled and we are going to use linux/endian onboard systems to start the server together with the operating system. This requires SSH access, which you can enable
 in the Administration Panel: http://docs.endian.com/3.2/utm/system.html#ssh-access
 
-However, there is one thing that needs to be installed by you: the python flask library for hosting HTTP servers and the gunicorn application server. So, when you have logged into your firewall using your prefered SSH client, you need to run `pip install flask` and `pip install gunicorn`. 
+However, there are some things that need to be installed by you: pip, the python package manager, the python flask library for hosting HTTP servers and the gunicorn application server. So, when you have logged into your firewall using your prefered SSH client, you need to run `easy_install pip`, `pip install flask` and `pip install gunicorn`. 
 After the installation finished, you can upload the [server/Endian-GPO.py](https://github.com/StollD/endian-gpo/tree/master/server/Endian-GPO.py) script somewhere to the firewall, and run it using the [server/startup.sh](https://github.com/StollD/endian-gpo/tree/master/server/startup.sh) 
 script. This script **must be** started from the same directory as `Endian-GPO.py`, otherwise it won't work.
 
