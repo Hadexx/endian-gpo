@@ -8,8 +8,8 @@ function Get-RegValue([String] $KeyPath, [String] $ValueName) {
 function Get-RegValues([String] $KeyPath) {
     $RegKey = (Get-ItemProperty $KeyPath)
     $RegKey.PSObject.Properties | 
-    Where-Object { $_.Name -ne "PSPath" -and $_.Name -ne "PSParentPath" -and $_.Name -ne "PSChildName" -and $_.Name -ne "PSDrive" -and $_.Name -ne "PSProvider" } | 
-    ForEach-Object {
+        Where-Object { $_.Name -ne "PSPath" -and $_.Name -ne "PSParentPath" -and $_.Name -ne "PSChildName" -and $_.Name -ne "PSDrive" -and $_.Name -ne "PSProvider" } | 
+        ForEach-Object {
         $_.Name
     }
 }
@@ -28,10 +28,13 @@ Get-RegValues 'HKLM:\SOFTWARE\Policies\Endian' | ForEach-Object {
 
 # Apply the changes to the router
 getmac /FO CSV /NH | ForEach-Object { $_.Replace('"', "").Split(",")[0] } | ForEach-Object {
-    if ($bypass -eq 1) {
-        Invoke-WebRequest -Uri "http://$($routerIP):7777/register" -Method POST -Body @{mac=$_}
+    if ($_ -Match "-") {
+        if ($bypass -eq 1) {
+            Invoke-WebRequest -Uri "http://$($routerIP):7777/register" -UseBasicParsing -Method POST -Body @{mac = $_.Replace("-", ":")} | Out-Null
+        }
+        if ($bypass -eq 0) {
+            Invoke-WebRequest -Uri "http://$($routerIP):7777/unregister" -UseBasicParsing -Method POST -Body @{mac = $_.Replace("-", ":")} | Out-Null
+        }
     }
-    if ($bypass -eq 0) {
-        Invoke-WebRequest -Uri "http://$($routerIP):7777/unregister" -Method POST -Body @{mac=$_}
-    }    
 }
+
