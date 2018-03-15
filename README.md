@@ -33,5 +33,6 @@ To start the server automatically when Endian starts, you should add a call to `
 To test if the server works, you can open `http://<your endian ip>:7777/` in your browser, and you should see a **Not found** answer.
 
 ## License
-Copyright (c) 2017 Dorian Stoll
+Copyright (c) 2018 Dorian Stoll
+
 Licensed under the terms of the MIT License.
