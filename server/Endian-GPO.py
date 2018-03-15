@@ -1,8 +1,8 @@
 # endian-gpo - Linking Endians transparent proxy with Active Directory Group Policies
-# Copyright (c) 2017 Dorian Stoll
+# Copyright (c) 2018 Dorian Stoll
 # Licensed under the Terms of the MIT License
 
-from flask import Flask
+from flask import Flask, abort
 from flask import request
 
 import threading
@@ -14,6 +14,9 @@ lock = threading.Lock()
 
 # Constants
 settingsFile = "/var/efw/proxy/settings"
+
+# Configuration
+SECRET = "" # Enter your own one here
 
 def reload_proxy():
     subprocess.call("/usr/local/bin/restartsquid", shell=True)
@@ -45,6 +48,9 @@ def register():
     with lock: # Force synchronous execution
         whitelist = load_whitelist()
         mac = request.form.get("mac")
+        secret = request.form.get("secret")
+        if secret != SECRET:
+            abort(403)
         if mac in whitelist:
             return "MAC Address already registered for transparent proxy bypass", 200
         else:
@@ -61,6 +67,9 @@ def unregister():
     with lock: # Force synchronous execution
         whitelist = load_whitelist()
         mac = request.form.get("mac")
+        secret = request.form.get("secret")
+        if secret != SECRET:
+            abort(403)
         if mac in whitelist:
             whitelist.remove(mac)
             save_whitelist(whitelist)

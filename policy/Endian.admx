@@ -1,6 +1,6 @@
 <policyDefinitions revision="1.0" schemaVersion="1.0">
   <policyNamespaces>
-    <target prefix="fullarmor" namespace="FullArmor.Policies.E12641DF_C161_42FD_A583_92F607051317" />
+    <target prefix="fullarmor" namespace="FullArmor.Policies.8E6C17DB_D924_429D_8FF1_C768EC1B3D91" />
     <using prefix="windows" namespace="Microsoft.Policies.Windows" />
   </policyNamespaces>
   <supersededAdm fileName="" />
@@ -12,6 +12,12 @@
     <policy name="POL_85CA3958_E4E4_4F13_B757_F22F790A634A" class="Machine" displayName="$(string.POL_85CA3958_E4E4_4F13_B757_F22F790A634A)" explainText="$(string.POL_85CA3958_E4E4_4F13_B757_F22F790A634A_Help)" presentation="$(presentation.POL_85CA3958_E4E4_4F13_B757_F22F790A634A)" key="SOFTWARE\Policies\Endian" valueName="routerIPMode">
       <parentCategory ref="CAT_DC9D8DB3_D500_4936_A2F9_C4459CC09D37" />
       <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
       <elements>
         <text id="TXT_78F23B33_7FD2_4FB4_A109_B57639EAF261" key="SOFTWARE\Policies\Endian" valueName="routerIP" required="true" />
       </elements>
@@ -19,6 +25,25 @@
     <policy name="POL_A2FE8983_212D_491C_9510_EA9673974684" class="Machine" displayName="$(string.POL_A2FE8983_212D_491C_9510_EA9673974684)" explainText="$(string.POL_A2FE8983_212D_491C_9510_EA9673974684_Help)" key="SOFTWARE\Policies\Endian" valueName="bypass">
       <parentCategory ref="CAT_DC9D8DB3_D500_4936_A2F9_C4459CC09D37" />
       <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="POL_742870F2_99B8_41D9_BEDA_D21C739D6BF9" class="Machine" displayName="$(string.POL_742870F2_99B8_41D9_BEDA_D21C739D6BF9)" presentation="$(presentation.POL_742870F2_99B8_41D9_BEDA_D21C739D6BF9)" key="SOFTWARE\Policies\Endian" valueName="secretMode">
+      <parentCategory ref="CAT_DC9D8DB3_D500_4936_A2F9_C4459CC09D37" />
+      <supportedOn ref="windows:SUPPORTED_WindowsVista" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <text id="TXT_59664316_FB18_4801_B1E6_131A7D83B6A5" key="SOFTWARE\Policies\Endian" valueName="secret" required="true" />
+      </elements>
     </policy>
   </policies>
 </policyDefinitions>
